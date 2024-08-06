@@ -1,6 +1,7 @@
 """Checkers."""
 
 import csv
+import logging
 from ipaddress import IPv4Address, IPv6Address
 from typing import Optional, Tuple, Union
 
@@ -8,6 +9,8 @@ import dns.resolver
 import requests
 
 from rblchecker.utilities import get_ip_addresses_in_range, reverse_ip_address
+
+logger = logging.getLogger(__name__)
 
 BASE_URL_SNDS = (
     "https://sendersupport.olc.protection.outlook.com/snds/ipStatus.aspx"
@@ -45,10 +48,16 @@ class DNSChecker(Checker):
 
         try:
             dns.resolver.resolve(query_name, "A")
-        except dns.resolver.NXDOMAIN:
+        except (
+            dns.resolver.NXDOMAIN,
+            dns.resolver.NoAnswer,  # Some lists return NOERROR instead of NXDOMAIN
+            dns.resolver.NoNameservers,  # Some lists return SERVFAIL instead of NXDOMAIN
+        ):
+            logger.debug("%s not listed", query_name)
+
             return False
-        except dns.resolver.NoNameservers:
-            # Some lists return SERVFAIL instead of NXDOMAIN
+        except dns.resolver.LifetimeTimeout:
+            logger.exception("Timeout on %s, skipping...", self.host)
 
             return False
 

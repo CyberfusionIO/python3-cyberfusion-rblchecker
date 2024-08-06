@@ -139,6 +139,19 @@ def dns_mock_servfail(mocker: MockerFixture) -> None:
 
 
 @pytest.fixture
+def dns_mock_timeout(mocker: MockerFixture) -> None:
+    mocker.patch(
+        "dns.resolver.resolve",
+        side_effect=dns.resolver.LifetimeTimeout(),
+    )
+
+
+@pytest.fixture
+def dns_mock_noanswer(mocker: MockerFixture) -> None:
+    mocker.patch("dns.resolver.resolve", side_effect=dns.resolver.NoAnswer())
+
+
+@pytest.fixture
 def cli_config(mocker: MockerFixture, config_path: str) -> None:
     mocker.patch(
         "rblchecker.CLI.get_args",

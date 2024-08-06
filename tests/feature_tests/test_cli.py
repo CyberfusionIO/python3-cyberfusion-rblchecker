@@ -113,3 +113,31 @@ def test_cli_dns_servfail(
     assert not any(
         line.startswith("DNS") for line in capsys.readouterr().out.splitlines()
     )
+
+
+def test_cli_dns_timeout(
+    capsys: CaptureFixture,
+    dns_mock_timeout: None,
+    snds_mock_unlisted: None,
+    cli_config: None,
+) -> None:
+    with pytest.raises(SystemExit):
+        CLI.main()
+
+    assert not any(
+        line.startswith("DNS") for line in capsys.readouterr().out.splitlines()
+    )
+
+
+def test_cli_dns_noanswer(
+    capsys: CaptureFixture,
+    dns_mock_noanswer: None,
+    snds_mock_unlisted: None,
+    cli_config: None,
+) -> None:
+    with pytest.raises(SystemExit):
+        CLI.main()
+
+    assert not any(
+        line.startswith("DNS") for line in capsys.readouterr().out.splitlines()
+    )
