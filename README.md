@@ -4,8 +4,10 @@ Use rblchecker to check whether your outgoing mail IP addresses are listed on RB
 
 The following checkers are supported:
 
-* DNS (for hosts in config)
+* DNS
+* * Every host in the config is checked.
 * Microsoft SNDS
+* * Not only blacklisted IPs, but also IPs with a 'special' status are returned. See 'IP status' on https://sendersupport.olc.protection.outlook.com/snds/FAQ.aspx
 
 # Install
 
