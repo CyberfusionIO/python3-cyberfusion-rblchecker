@@ -7,7 +7,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="rblchecker",
-    version="1.0.1",
+    version="1.0.2",
     description="Use rblchecker to check whether your outgoing mail IP addresses are listed on RBLs.",
     long_description=long_description,
     long_description_content_type="text/markdown",
