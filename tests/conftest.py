@@ -113,10 +113,23 @@ def dns_mock_listed(mocker: MockerFixture) -> None:
 
 
 @pytest.fixture
-def dns_mock_unlisted(mocker: MockerFixture) -> None:
+def dns_mock_unlisted_nxdomain(mocker: MockerFixture) -> None:
     try:
         dns.resolver.resolve("doesntexist.example.com", "A")
     except dns.resolver.NXDOMAIN as e:
+        e_ = e
+
+    mocker.patch(
+        "dns.resolver.resolve",
+        side_effect=e_,
+    )
+
+
+@pytest.fixture
+def dns_mock_servfail(mocker: MockerFixture) -> None:
+    try:
+        dns.resolver.resolve("dnssec-failed.org", "A")
+    except dns.resolver.NoNameservers as e:
         e_ = e
 
     mocker.patch(

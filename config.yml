@@ -10,47 +10,4 @@ checkers:
   snds:
     key: '4efe7ddc-64df-46da-ad9e-dd5212c2e6c0'
   dns:
-    hosts:
-      - b.barracudacentral.org
-      - bl.spamcop.net
-      - cbl.abuseat.org
-      - combined.rbl.msrbl.net
-      - dnsbl.antispam.or.id
-      - dnsbl.sorbs.net
-      - drone.abuse.ch
-      - dsn.rfc-ignorant.org
-      - dul.dnsbl.sorbs.net
-      - dyna.spamrats.com
-      - http.dnsbl.sorbs.net
-      - images.rbl.msrbl.net
-      - korea.services.net
-      - l1.spews.dnsbl.sorbs.net
-      - l2.spews.dnsbl.sorbs.net
-      - misc.dnsbl.sorbs.net
-      - noptr.spamrats.com
-      - pbl.spamhaus.org
-      - phishing.rbl.msrbl.net
-      - postmaster.rfc-ignorant.org
-      - psbl.surriel.com
-      - rbl.spamlab.com
-      - rbl.suresupport.com
-      - relays.bl.kundenserver.de
-      - relays.nether.net
-      - sbl.spamhaus.org
-      - smtp.dnsbl.sorbs.net
-      - socks.dnsbl.sorbs.net
-      - spam.dnsbl.sorbs.net
-      - spam.rbl.msrbl.net
-      - spam.spamrats.com
-      - spamguard.leadmon.net
-      - spamrbl.imp.ch
-      - tr.countries.nerd.dk
-      - truncate.gbudb.net
-      - unsure.nether.net
-      - virus.rbl.msrbl.net
-      - web.dnsbl.sorbs.net
-      - whois.rfc-ignorant.org
-      - wormrbl.imp.ch
-      - xbl.spamhaus.org
-      - zen.spamhaus.org
-      - zombie.dnsbl.sorbs.net
+    hosts: ['0spam.fusionzero.com', 'access.redhawk.org', 'all.s5h.net', 'all.spamrats.com', 'b.barracudacentral.org', 'backscatter.spameatingmonkey.net', 'bb.barracudacentral.org', 'bl.drmx.org', 'bl.mailspike.net', 'bl.nosolicitado.org', 'bl.rbl.scrolloutf1.com', 'bl.scientificspam.net', 'bl.score.senderscore.com', 'bl.spamcop.net', 'bl.spameatingmonkey.net', 'bl.suomispam.net', 'bl.worst.nosolicitado.org', 'black.junkemailfilter.com', 'black.mail.abusix.zone', 'cart00ney.surriel.com', 'cbl.abuseat.org', 'dnsbl-1.uceprotect.net', 'dnsbl-2.uceprotect.net', 'dnsbl-3.uceprotect.net', 'dnsbl.dronebl.org', 'dnsbl.justspam.org', 'dnsbl.kempt.net', 'dnsbl.net.ua', 'dnsbl.spfbl.net', 'dnsbl.tornevall.org', 'dnsbl.zapbl.net', 'dnsrbl.swinog.ch', 'dyna.spamrats.com', 'exploit.mail.abusix.zone', 'fnrbl.fast.net', 'hostkarma.junkemailfilter.com', 'ips.backscatterer.org', 'ix.dnsbl.manitu.net', 'mail-abuse.blacklist.jippg.org', 'mail-abuse.com', 'multi.surbl.org', 'netscan.rbl.blockedservers.com', 'noptr.spamrats.com', 'bl.nordspam.com', 'pbl.spamhaus.org', 'psbl.surriel.com', 'rbl.abuse.ro', 'rbl.blockedservers.com', 'rbl.dns-servicios.com', 'rbl.interserver.net', 'rbl2.triumf.ca', 'rep.mailspike.net', 'sbl.spamhaus.org', 'spam.dnsbl.anonmails.de', 'spam.pedantic.org', 'spam.rbl.blockedservers.com', 'spam.spamrats.com', 'spamlist.or.kr', 'spamrbl.imp.ch', 'spamsources.fabel.dk', 'talosintelligence.com', 'torexit.dan.me.uk', 'truncate.gbudb.net', 'xbl.spamhaus.org', 'z.mailspike.net', 'zen.spamhaus.org', 'all.rbl.jp', 'aspews.ext.sorbs.net', 'babl.rbl.webiron.net', 'bl.blocklist.de', 'bl.konstant.no', 'bl.nszones.com', 'bl.spamcannibal.org', 'block.dnsbl.sorbs.net', 'bsb.empty.us', 'cbl.anti-spam.org.cn', 'cblless.anti-spam.org.cn', 'cblplus.anti-spam.org.cn', 'cdl.anti-spam.org.cn', 'combined.rbl.msrbl.net', 'db.wpbl.info', 'dnsbl.cobion.com', 'dnsbl.inps.de', 'dnsbl.rv-soft.info', 'dnsbl.rymsho.ru', 'dnsbl.sorbs.net', 'dnsrbl.org', 'dul.dnsbl.sorbs.net', 'dyn.nszones.com', 'escalations.dnsbl.sorbs.net', 'exitnodes.tor.dnsbl.sectoor.de', 'http.dnsbl.sorbs.net', 'images.rbl.msrbl.net', 'invaluement sip', 'invaluement sip/24', 'korea.services.net', 'l1.bbfh.ext.sorbs.net', 'l2.bbfh.ext.sorbs.net', 'l4.bbfh.ext.sorbs.net', 'list.bbfh.org', 'misc.dnsbl.sorbs.net', 'new.spam.dnsbl.sorbs.net', 'old.spam.dnsbl.sorbs.net', 'phishing.rbl.msrbl.net', 'pofon.foobar.hu', 'problems.dnsbl.sorbs.net', 'proxies.dnsbl.sorbs.net', 'rbl.efnet.org', 'rbl.efnetrbl.org', 'rbl.iprange.net', 'rbl.megarbl.net', 'recent.spam.dnsbl.sorbs.net', 'relays.dnsbl.sorbs.net', 'safe.dnsbl.sorbs.net', 'short.rbl.jp', 'smtp.dnsbl.sorbs.net', 'socks.dnsbl.sorbs.net', 'spam.dnsbl.sorbs.net', 'spam.rbl.msrbl.net', 'srn.surgate.net', 'st.technovision.dk', 'stabl.rbl.webiron.net', 'tor.dnsbl.sectoor.de', 'ubl.unsubscore.com', 'virus.rbl.msrbl.net', 'web.dnsbl.sorbs.net', 'web.rbl.msrbl.net', 'zombie.dnsbl.sorbs.net']
