@@ -8,6 +8,7 @@ ip_networks:
 
 checkers:
   snds:
+    # Find your key on https://sendersupport.olc.protection.outlook.com/snds/auto.aspx
     key: '4efe7ddc-64df-46da-ad9e-dd5212c2e6c0'
   dns:
     hosts:
