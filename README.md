@@ -29,11 +29,16 @@ Find an example config in `config.yml`.
 
 # Usage
 
-Syntax:
+Run all checkers:
 
     rblchecker --config-path=...
 
-This command runs all checkers.
+Example output:
+
+```
+(DNS) IP address 198.51.100.100 is listed on access.redhawk.org
+(SNDS) IP address 198.51.100.100 is listed on SNDS (reason: 'Junked due to user complaints or other evidence of spamming')
+```
 
 # Tests
 
