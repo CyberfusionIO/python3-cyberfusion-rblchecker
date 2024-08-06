@@ -89,7 +89,21 @@ def test_cli_dns_listed(
 
 def test_cli_dns_unlisted(
     capsys: CaptureFixture,
-    dns_mock_unlisted: None,
+    dns_mock_unlisted_nxdomain: None,
+    snds_mock_unlisted: None,
+    cli_config: None,
+) -> None:
+    with pytest.raises(SystemExit):
+        CLI.main()
+
+    assert not any(
+        line.startswith("DNS") for line in capsys.readouterr().out.splitlines()
+    )
+
+
+def test_cli_dns_servfail(
+    capsys: CaptureFixture,
+    dns_mock_servfail: None,
     snds_mock_unlisted: None,
     cli_config: None,
 ) -> None:

@@ -47,6 +47,10 @@ class DNSChecker(Checker):
             dns.resolver.resolve(query_name, "A")
         except dns.resolver.NXDOMAIN:
             return False
+        except dns.resolver.NoNameservers:
+            # Some lists return SERVFAIL instead of NXDOMAIN
+
+            return False
 
         return True
 
