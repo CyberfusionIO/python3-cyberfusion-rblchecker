@@ -1,13 +1,15 @@
 import csv
 import io
 import ipaddress
+import os
 import uuid
 from collections import namedtuple
-from typing import List, NewType, Tuple
+from typing import Generator, List, NewType
 
 import dns
 import docopt
 import pytest
+import yaml
 from pytest_mock import MockerFixture
 from requests_mock.mocker import Mocker
 
@@ -20,24 +22,47 @@ SNDSListing = namedtuple(
 SNDSListings = NewType("SNDSListings", List[SNDSListing])
 
 
+def get_tmp_file() -> str:
+    return os.path.join(os.path.sep, "tmp", str(uuid.uuid4()))
+
+
+@pytest.fixture
+def config_path() -> str:
+    return get_tmp_file()
+
+
 @pytest.fixture(autouse=True)
-def config_mock(mocker: MockerFixture) -> dict:
+def config_mock(config_path: str) -> Generator[dict, None, None]:
     config = {
-        "ip_networks": ["198.51.100.0/27"],
+        "ip_networks": [
+            # IPv6 address
+            "2001:0db8::/128",
+            # IPv6 range (discouraged, but should still be tested)
+            "2001:0db8::/127",
+            # IPv4 address
+            "198.51.100.100/32",
+            # IPv4 range
+            "198.51.100.0/27",
+        ],
         "checkers": {
-            "snds": {"key": uuid.uuid4()},
+            "snds": {"key": str(uuid.uuid4())},
             "dns": {"hosts": ["dnsbl.example.com"]},
         },
     }
 
-    mocker.patch("rblchecker.CLI.get_config", return_value=config)
+    with open(config_path, "w") as fh:
+        fh.write(yaml.dump(config))
 
-    return config
+    yield config
+
+    os.unlink(config_path)
 
 
 @pytest.fixture
-def snds_mock_listed(requests_mock: Mocker, config_mock: dict) -> SNDSListings:
-    ip_range = ipaddress.ip_network(config_mock["ip_networks"][0])
+def snds_mock_listed(
+    requests_mock: Mocker, config_mock: Generator[dict, None, None]
+) -> SNDSListings:
+    ip_range = ipaddress.ip_network(config_mock["ip_networks"][3])
 
     listings = SNDSListings(
         [
@@ -46,7 +71,13 @@ def snds_mock_listed(requests_mock: Mocker, config_mock: dict) -> SNDSListings:
                 ip_range[25],  # Random
                 "Yes",
                 "Blocked due to user complaints or other evidence of spamming",
-            )
+            ),
+            SNDSListing(
+                ip_range[26],  # Random
+                ip_range[27],  # Random
+                "No",
+                "Junked due to user complaints or other evidence of spamming",
+            ),
         ]
     )
 
@@ -65,7 +96,9 @@ def snds_mock_listed(requests_mock: Mocker, config_mock: dict) -> SNDSListings:
 
 
 @pytest.fixture
-def snds_mock_unlisted(requests_mock: Mocker, config_mock: dict) -> None:
+def snds_mock_unlisted(
+    requests_mock: Mocker, config_mock: Generator[dict, None, None]
+) -> None:
     requests_mock.get(BASE_URL_SNDS, text="")
 
 
@@ -92,12 +125,12 @@ def dns_mock_unlisted(mocker: MockerFixture) -> None:
     )
 
 
-@pytest.fixture(autouse=True)
-def _cli_config(mocker: MockerFixture) -> None:
+@pytest.fixture
+def cli_config(mocker: MockerFixture, config_path: str) -> None:
     mocker.patch(
         "rblchecker.CLI.get_args",
         return_value=docopt.docopt(
             CLI.__doc__,
-            ["--config-path", "config.yml"],
+            ["--config-path", config_path],
         ),
     )

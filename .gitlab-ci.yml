@@ -16,7 +16,7 @@ unit test and feature test:
   image: python:3.11
   script:
     - pip install --no-cache-dir -r requirements/test.txt
-    - pytest -vvv --cov-branch --cov=rblchecker --cov-config=.coveragerc --cov-fail-under=95 --junitxml=report-pytest.xml
+    - pytest -vvv --cov-branch --cov=rblchecker --cov-config=.coveragerc --cov-fail-under=100 --junitxml=report-pytest.xml
   artifacts:
     reports:
       junit: report-*.xml

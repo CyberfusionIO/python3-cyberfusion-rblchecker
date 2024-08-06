@@ -84,9 +84,6 @@ class SNDSChecker(Checker):
             if str(self.ip_address) not in ip_addresses_in_range:
                 continue
 
-            if row["blocked"] != "Yes":
-                continue
-
             return True, row["details"]
 
         return False, None

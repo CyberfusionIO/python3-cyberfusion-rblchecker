@@ -3,7 +3,7 @@
 # inefficient, resource-heavy and slow.
 
 ip_networks:
-  - 2001:0db8::
+  - 2001:0db8::/128
   - 198.51.100.0/24
 
 checkers:

@@ -1,5 +1,8 @@
+from typing import Generator
+
 import pytest
 from _pytest.capture import CaptureFixture
+from pytest_mock import MockerFixture
 
 from rblchecker import CLI
 from rblchecker.utilities import (
@@ -8,12 +11,19 @@ from rblchecker.utilities import (
 )
 from tests.conftest import SNDSListings
 
+
+def test_cli_get_args(mocker: MockerFixture):
+    mocker.resetall()
+
+    with pytest.raises(SystemExit):
+        CLI.get_args()
+
+
 # SNDS
 
 
 def test_cli_snds_listed(
-    capsys: CaptureFixture,
-    snds_mock_listed: SNDSListings,
+    capsys: CaptureFixture, snds_mock_listed: SNDSListings, cli_config: None
 ) -> None:
     with pytest.raises(SystemExit) as e:
         CLI.main()
@@ -35,8 +45,7 @@ def test_cli_snds_listed(
 
 
 def test_cli_snds_unlisted(
-    capsys: CaptureFixture,
-    snds_mock_unlisted: None,
+    capsys: CaptureFixture, snds_mock_unlisted: None, cli_config: None
 ) -> None:
     with pytest.raises(SystemExit):
         CLI.main()
@@ -53,8 +62,9 @@ def test_cli_snds_unlisted(
 def test_cli_dns_listed(
     capsys: CaptureFixture,
     dns_mock_listed: None,
-    config_mock: dict,
+    config_mock: Generator[dict, None, None],
     snds_mock_unlisted: None,
+    cli_config: None,
 ) -> None:
     with pytest.raises(SystemExit) as e:
         CLI.main()
@@ -78,7 +88,10 @@ def test_cli_dns_listed(
 
 
 def test_cli_dns_unlisted(
-    capsys: CaptureFixture, dns_mock_unlisted: None, snds_mock_unlisted: None
+    capsys: CaptureFixture,
+    dns_mock_unlisted: None,
+    snds_mock_unlisted: None,
+    cli_config: None,
 ) -> None:
     with pytest.raises(SystemExit):
         CLI.main()
