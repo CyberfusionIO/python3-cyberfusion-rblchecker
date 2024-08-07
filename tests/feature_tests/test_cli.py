@@ -4,7 +4,7 @@ import pytest
 from _pytest.capture import CaptureFixture
 from pytest_mock import MockerFixture
 
-from rblchecker import CLI
+from rblchecker import CLI, checkers
 from rblchecker.utilities import (
     get_ip_addresses_in_ip_network,
     get_ip_addresses_in_range,
@@ -73,17 +73,26 @@ def test_cli_dns_listed(
 
     output = capsys.readouterr().out.splitlines()
 
+    # Get IP addresses
+
     ip_addresses = []
 
     for ip_network in config_mock["ip_networks"]:
         ip_addresses.extend(get_ip_addresses_in_ip_network(ip_network))
 
+    # Test output
+
     assert len(output) >= len(ip_addresses)
 
     for ip_address in ip_addresses:
         for host in config_mock["checkers"]["dns"]["hosts"]:
+            _, query_name, query_result = checkers.DNSChecker(
+                ip_address, host
+            ).check()
+
             assert (
-                f"(DNS) IP address {ip_address} is listed on {host}" in output
+                f"(DNS) IP address {ip_address} is listed on {host} ({query_name} -> {query_result})"
+                in output
             )
 
 

@@ -48,12 +48,16 @@ def main() -> None:
             # Check DNS
 
             for host in config["checkers"]["dns"]["hosts"]:
-                listed = checkers.DNSChecker(ip_address, host).check()
+                listed, query_name, query_result = checkers.DNSChecker(
+                    ip_address, host
+                ).check()
 
                 if listed:
                     exit_code = 1
 
-                    print(f"(DNS) IP address {ip_address} is listed on {host}")
+                    print(
+                        f"(DNS) IP address {ip_address} is listed on {host} ({query_name} -> {query_result})"
+                    )
 
             # Check SNDS
 
