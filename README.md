@@ -36,7 +36,7 @@ Run all checkers:
 Example output:
 
 ```
-(DNS) IP address 198.51.100.100 is listed on access.redhawk.org
+(DNS) IP address 198.51.100.100 is listed on access.redhawk.org (100.100.51.198.access.redhawk.org -> 127.0.0.0)
 (SNDS) IP address 198.51.100.100 is listed on SNDS (reason: 'Junked due to user complaints or other evidence of spamming')
 ```
 

@@ -42,12 +42,12 @@ class DNSChecker(Checker):
 
     def check(
         self,
-    ) -> bool:
+    ) -> Tuple[bool, str, Optional[str]]:
         """Check whether IP address is listed in RBL."""
         query_name = self._get_query_name(self.ip_address, self.host)
 
         try:
-            dns.resolver.resolve(query_name, "A")
+            answer = dns.resolver.resolve(query_name, "A")
         except (
             dns.resolver.NXDOMAIN,
             dns.resolver.NoAnswer,  # Some lists return NOERROR instead of NXDOMAIN
@@ -55,13 +55,13 @@ class DNSChecker(Checker):
         ):
             logger.debug("%s not listed", query_name)
 
-            return False
+            return False, query_name, None
         except dns.resolver.LifetimeTimeout:
             logger.exception("Timeout on %s, skipping...", self.host)
 
-            return False
+            return False, query_name, None
 
-        return True
+        return True, query_name, answer[0].to_text()
 
 
 class SNDSChecker(Checker):
