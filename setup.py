@@ -30,7 +30,7 @@ setup(
         "requests==2.31.0",
         "netaddr==1.3.0",
         "dnspython==2.6.1",
-        "PyYAML==6.0",
+        "PyYAML==6.0.2",
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
