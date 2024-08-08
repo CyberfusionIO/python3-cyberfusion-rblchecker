@@ -27,7 +27,7 @@ setup(
     install_requires=[
         "docopt==0.6.2",
         "schema==0.7.7",
-        "requests==2.31.0",
+        "requests==2.32.3",
         "netaddr==1.3.0",
         "dnspython==2.6.1",
         "PyYAML==6.0.2",
