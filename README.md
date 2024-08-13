@@ -40,6 +40,8 @@ Example output:
 (SNDS) IP address 198.51.100.100 is listed on SNDS (reason: 'Junked due to user complaints or other evidence of spamming')
 ```
 
+If there's any listings, the command exits with a non-zero RC.
+
 # Tests
 
 Run tests with pytest:
