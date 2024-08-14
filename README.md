@@ -41,9 +41,3 @@ Example output:
 ```
 
 If there's any listings, the command exits with a non-zero RC.
-
-# Tests
-
-Run tests with pytest:
-
-    pytest tests/
