@@ -11,9 +11,8 @@ setup(
     description="Use rblchecker to check whether your outgoing mail IP addresses are listed on RBLs.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    python_requires=">=3.6",
-    author="William Edwards",
-    author_email="support@cyberfusion.nl",
+    author="Cyberfusion",
+    author_email="support@cyberfusion.io",
     url="https://github.com/CyberfusionIO/rblchecker",
     platforms=["linux"],
     packages=find_packages(
@@ -32,11 +31,4 @@ setup(
         "dnspython==2.6.1",
         "PyYAML==6.0.2",
     ],
-    classifiers=[
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
-    ],
-    keywords=["cyberfusion", "rbl"],
-    license="MIT",
 )
