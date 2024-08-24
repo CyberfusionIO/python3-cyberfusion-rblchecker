@@ -12,9 +12,7 @@ from rblchecker.utilities import get_ip_addresses_in_range, reverse_ip_address
 
 logger = logging.getLogger(__name__)
 
-BASE_URL_SNDS = (
-    "https://sendersupport.olc.protection.outlook.com/snds/ipStatus.aspx"
-)
+BASE_URL_SNDS = "https://sendersupport.olc.protection.outlook.com/snds/ipStatus.aspx"
 
 
 class Checker:
@@ -26,17 +24,13 @@ class Checker:
 class DNSChecker(Checker):
     """Checker for DNSBLs."""
 
-    def __init__(
-        self, ip_address: Union[IPv6Address, IPv4Address], host: str
-    ) -> None:
+    def __init__(self, ip_address: Union[IPv6Address, IPv4Address], host: str) -> None:
         """Set attributes."""
         self.ip_address = ip_address
         self.host = host
 
     @staticmethod
-    def _get_query_name(
-        ip_address: Union[IPv6Address, IPv4Address], host: str
-    ) -> str:
+    def _get_query_name(ip_address: Union[IPv6Address, IPv4Address], host: str) -> str:
         """Get name for DNS query."""
         return reverse_ip_address(ip_address) + "." + host
 
@@ -67,9 +61,7 @@ class DNSChecker(Checker):
 class SNDSChecker(Checker):
     """Checker for Microsoft SNDS."""
 
-    def __init__(
-        self, ip_address: Union[IPv6Address, IPv4Address], key: str
-    ) -> None:
+    def __init__(self, ip_address: Union[IPv6Address, IPv4Address], key: str) -> None:
         """Set attributes."""
         self.ip_address = ip_address
         self.key = key
