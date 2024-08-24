@@ -35,9 +35,7 @@ def test_cli_snds_listed(
     for listing in snds_mock_listed:
         start_range, end_range, blocked, reason = listing
 
-        for ip_address in get_ip_addresses_in_range(
-            str(start_range), str(end_range)
-        ):
+        for ip_address in get_ip_addresses_in_range(str(start_range), str(end_range)):
             assert (
                 f"(SNDS) IP address {ip_address} is listed on SNDS (reason: '{reason}')"
                 in output
@@ -51,8 +49,7 @@ def test_cli_snds_unlisted(
         CLI.main()
 
     assert not any(
-        line.startswith("SNDS")
-        for line in capsys.readouterr().out.splitlines()
+        line.startswith("SNDS") for line in capsys.readouterr().out.splitlines()
     )
 
 
@@ -86,9 +83,7 @@ def test_cli_dns_listed(
 
     for ip_address in ip_addresses:
         for host in config_mock["checkers"]["dns"]["hosts"]:
-            _, query_name, query_result = checkers.DNSChecker(
-                ip_address, host
-            ).check()
+            _, query_name, query_result = checkers.DNSChecker(ip_address, host).check()
 
             assert (
                 f"(DNS) IP address {ip_address} is listed on {host} ({query_name} -> {query_result})"

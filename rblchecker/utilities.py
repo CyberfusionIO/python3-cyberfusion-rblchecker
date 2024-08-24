@@ -10,8 +10,7 @@ from netaddr import iter_iprange
 def get_ip_addresses_in_range(start_range: str, end_range: str) -> List[str]:
     """Get IP addresses in range."""
     return [
-        str(ip_address)
-        for ip_address in iter_iprange(start_range, end_range, step=1)
+        str(ip_address) for ip_address in iter_iprange(start_range, end_range, step=1)
     ]
 
 
