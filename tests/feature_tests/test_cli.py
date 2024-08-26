@@ -4,8 +4,9 @@ import pytest
 from _pytest.capture import CaptureFixture
 from pytest_mock import MockerFixture
 
-from rblchecker import CLI, checkers
-from rblchecker.utilities import (
+from cyberfusion.RBLChecker import checkers
+from cyberfusion.RBLChecker import CLI
+from cyberfusion.RBLChecker.utilities import (
     get_ip_addresses_in_ip_network,
     get_ip_addresses_in_range,
 )

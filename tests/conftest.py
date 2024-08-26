@@ -13,8 +13,8 @@ import yaml
 from pytest_mock import MockerFixture
 from requests_mock.mocker import Mocker
 
-from rblchecker import CLI
-from rblchecker.checkers import BASE_URL_SNDS
+from cyberfusion.RBLChecker import CLI
+from cyberfusion.RBLChecker.checkers import BASE_URL_SNDS
 
 SNDSListing = namedtuple(
     "SNDSListing", ["start_range", "end_range", "blocked", "reason"]
@@ -154,7 +154,7 @@ def dns_mock_noanswer(mocker: MockerFixture) -> None:
 @pytest.fixture
 def cli_config(mocker: MockerFixture, config_path: str) -> None:
     mocker.patch(
-        "rblchecker.CLI.get_args",
+        "cyberfusion.RBLChecker.CLI.get_args",
         return_value=docopt.docopt(
             CLI.__doc__,
             ["--config-path", config_path],

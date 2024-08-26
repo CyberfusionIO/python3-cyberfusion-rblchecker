@@ -13,9 +13,9 @@ import sys
 import docopt
 from schema import Schema
 
-from rblchecker import checkers
-from rblchecker.config import get_config
-from rblchecker.utilities import get_ip_addresses_in_ip_network
+from cyberfusion.RBLChecker import checkers
+from cyberfusion.RBLChecker.config import get_config
+from cyberfusion.RBLChecker.utilities import get_ip_addresses_in_ip_network
 
 
 def get_args() -> docopt.Dict:
