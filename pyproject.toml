@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rblchecker"
-version = "1.0.5"
+version = "1.0.5.1"
 description = "Use rblchecker to check whether your outgoing mail IP addresses are listed on RBLs."
 readme = "README.md"
 authors = [
@@ -23,4 +23,4 @@ dependencies = [
 "Source" = "https://github.com/CyberfusionIO/rblchecker"
 
 [project.scripts]
-rblchecker = "rblchecker.CLI:main"
+rblchecker = "cyberfusion.RBLChecker.CLI:main"
