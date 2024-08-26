@@ -8,7 +8,10 @@ from typing import Optional, Tuple, Union
 import dns.resolver
 import requests
 
-from rblchecker.utilities import get_ip_addresses_in_range, reverse_ip_address
+from cyberfusion.RBLChecker.utilities import (
+    get_ip_addresses_in_range,
+    reverse_ip_address,
+)
 
 logger = logging.getLogger(__name__)
 
