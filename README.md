@@ -1,4 +1,4 @@
-# rblchecker
+# python3-cyberfusion-rblchecker
 
 Use rblchecker to check whether your outgoing mail IP addresses are listed on RBLs.
 
@@ -16,6 +16,14 @@ The following checkers are supported:
 Run the following command to install the package from PyPI:
 
     pip3 install rblchecker
+
+## Debian
+
+Run the following commands to build a Debian package:
+
+    mk-build-deps -i -t 'apt -o Debug::pkgProblemResolver=yes --no-install-recommends -y'
+    dpkg-buildpackage -us -uc
+
 
 # Configure
 
