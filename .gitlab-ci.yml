@@ -17,7 +17,7 @@ stages:
 
 unit test and feature test:
   stage: test
-  image: python:3.12
+  image: python:3.11
   script:
     # From https://github.com/yaml/pyyaml/issues/601#issuecomment-1813963845
     - echo "cython<3" > /tmp/constraint.txt
