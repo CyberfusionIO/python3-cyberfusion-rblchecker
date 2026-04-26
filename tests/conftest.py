@@ -116,7 +116,7 @@ def dns_mock_listed(mocker: MockerFixture) -> None:
 def dns_mock_unlisted_nxdomain(mocker: MockerFixture) -> None:
     try:
         dns.resolver.resolve("doesntexist.example.com", "A")
-    except dns.resolver.NXDOMAIN as e:
+    except dns.resolver.NoAnswer as e:
         e_ = e
 
     mocker.patch(
